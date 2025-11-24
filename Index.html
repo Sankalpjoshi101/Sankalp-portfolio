@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sankalp Joshi | Data Scientist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --primary: #0f172a;     /* Dark Slate */
+            --secondary: #334155;   /* Lighter Slate */
+            --accent: #0ea5e9;      /* Sky Blue */
+            --text-light: #f8fafc;
+            --text-dark: #1e293b;
+            --bg-light: #f1f5f9;
+            --card-bg: #ffffff;
+            --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- Navigation --- */
+        nav {
+            background: rgba(15, 23, 42, 0.95);
+            color: var(--text-light);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+        
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1rem;
+            margin-top: 0;
+        }
+
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+        .hero h2 { font-size: 1.5rem; font-weight: 400; color: var(--accent); margin-bottom: 1.5rem; }
+        .hero p { max-width: 600px; margin-bottom: 2rem; color: #cbd5e1; }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--accent);
+            color: white;
+            border-radius: 5px;
+            font-weight: 600;
+            border: 2px solid var(--accent);
+        }
+        .btn:hover { background: transparent; color: var(--accent); }
+        .btn-outline { background: transparent; border: 2px solid var(--text-light); margin-left: 10px; }
+        .btn-outline:hover { background: var(--text-light); color: var(--primary); }
+
+        /* --- Section General --- */
+        section { padding: 5rem 10%; }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 10px auto 0;
+        }
+
+        /* --- Skills --- */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .skill-category h3 { margin-bottom: 1rem; color: var(--secondary); }
+        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tag {
+            background: #e2e8f0;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        /* --- Experience --- */
+        .exp-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--accent);
+        }
+        .exp-header { display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 1rem; }
+        .company { font-size: 1.2rem; font-weight: 700; color: var(--primary); }
+        .role { color: var(--accent); font-weight: 600; }
+        .date { color: #64748b; font-style: italic; }
+        
+        .project-block { margin-top: 1.5rem; padding-left: 1rem; border-left: 2px solid #e2e8f0; }
+        .project-title { font-weight: 700; margin-bottom: 0.5rem; color: var(--secondary); }
+        .project-block ul { list-style-type: disc; margin-left: 1.5rem; }
+        .project-block li { margin-bottom: 0.5rem; font-size: 0.95rem; }
+
+        /* --- Projects (Academic) --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .project-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .project-card:hover { transform: translateY(-5px); }
+        .project-card h3 { margin-bottom: 1rem; color: var(--primary); }
+
+        /* --- Education --- */
+        .edu-item {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .edu-school { font-weight: 700; }
+        .edu-degree { color: #64748b; }
+
+        /* --- Contact --- */
+        .contact { background: var(--primary); color: var(--text-light); text-align: center; }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .contact-item { display: flex; align-items: center; gap: 0.5rem; font-size: 1.1rem; }
+        .contact-item i { color: var(--accent); }
+
+        /* --- Footer --- */
+        footer {
+            background: #020617;
+            color: #64748b;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* --- Mobile --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* Simple hide for mobile MVP */
+            section { padding: 3rem 5%; }
+            .exp-header { flex-direction: column; gap: 0.5rem; }
+            .edu-item { flex-direction: column; text-align: center; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Sankalp Joshi</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Hi, I'm Sankalp Joshi</h1>
+        <h2>Data Scientist & ML Engineer</h2>
+        <p>Seasoned data scientist with 3+ years of experience designing and implementing scalable ML/DL solutions. Expert in Computer Vision, Generative AI, and Cloud Technologies.</p>
+        <div style="margin-top: 2rem;">
+            <a href="#contact" class="btn">Get in Touch</a>
+            <a href="https://www.linkedin.com/in/sankalp-joshi101" target="_blank" class="btn btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://leetcode.com/u/Sankalpjoshi" target="_blank" class="btn btn-outline"><i class="fas fa-code"></i> LeetCode</a>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Technical Expertise</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3><i class="fas fa-brain"></i> Data Science & AI</h3>
+                <div class="tags">
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">Deep Learning</span>
+                    <span class="tag">GenAI</span>
+                    <span class="tag">Computer Vision</span>
+                    <span class="tag">PyTorch</span>
+                    <span class="tag">OpenCV</span>
+                    <span class="tag">Scikit-learn</span>
+                    <span class="tag">NumPy/Pandas</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-chart-line"></i> Modeling & Stats</h3>
+                <div class="tags">
+                    <span class="tag">Causal Inference</span>
+                    <span class="tag">Econometrics</span>
+                    <span class="tag">A/B Testing</span>
+                    <span class="tag">Statistical Analysis</span>
+                    <span class="tag">Geo-testing</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-tools"></i> Tools & Cloud</h3>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">C++</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">Git</span>
+                    <span class="tag">Azure</span>
+                    <span class="tag">GCP</span>
+                    <span class="tag">Linux</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">Professional Experience</h2>
+
+        <!-- Job 1 -->
+        <div class="exp-card">
+            <div class="exp-header">
+                <div>
+                    <div class="company">SLB (Schlumberger)</div>
+                    <div class="role">Data Scientist</div>
+                </div>
+                <div class="date">Sept 2022 – Present</div>
+            </div>
+            <p>Working on end-to-end ML solutions ranging from Computer Vision for manufacturing to Generative AI for financial data.</p>
+
+            <!-- Sub Project 1 -->
+            <div class="project-block">
+                <div class="project-title">Electrical Board Quality Check Automation</div>
+                <ul>
+                    <li>Implemented defect detection and localization for Printed Wired Assembly (PWA) boards using Computer Vision, achieving <strong>>85% accuracy</strong>.</li>
+                    <li>Designed a multi-modal approach using Deep Learning and Nearest Neighbor methods.</li>
+                    <li>Reduced turnaround time from 20 minutes to 45 seconds.</li>
+                    <li>Global implementation projected to save <strong>$1.5 Million/year</strong>.</li>
+                </ul>
+            </div>
+
+            <!-- Sub Project 2 -->
+            <div class="project-block">
+                <div class="project-title">Digital Factory (HSE Solutions)</div>
+                <ul>
+                    <li>Developed HSE use cases (e.g., PPE detection, Scissor/Drum Lift safety) using object detection and segmentation.</li>
+                    <li>Achieved <strong>>80% accuracy</strong> on custom image datasets.</li>
+                    <li>Managed Dockerization and CI/CD pipelines for efficient deployment.</li>
+                </ul>
+            </div>
+
+            <!-- Sub Project 3 -->
+            <div class="project-block">
+                <div class="project-title">Conversational AI & Surface Inspection</div>
+                <ul>
+                    <li>Built a GenAI-based chatbot to dynamically generate and execute SQL queries for financial data.</li>
+                    <li>Improved decision-making by <strong>>75%</strong> via interactive data visualization.</li>
+                    <li>Implemented PaddleOCR for edge devices, reducing processing time from 5s to <strong><1s</strong>.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" style="background-color: white;">
+        <h2 class="section-title">Academic Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Electrical Line Fault Detection</h3>
+                <p style="margin-bottom: 1rem;">Developed ML/DL algorithms to detect and classify electrical line faults with high precision.</p>
+                <ul>
+                    <li><strong>Detection:</strong> Achieved 99.3% accuracy using Random Forest.</li>
+                    <li><strong>Classification:</strong> Polynomial Regression achieved 98.1% accuracy.</li>
+                    <li>Utilized Neural Networks, Decision Trees, and Random Forest for comparative analysis.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="edu-item">
+            <div>
+                <div class="edu-school">National Institute of Technology (NIT) Warangal</div>
+                <div class="edu-degree">B.Tech in Electrical and Electronics Engineering</div>
+            </div>
+            <div class="date">2018 – 2022</div>
+        </div>
+        <div class="edu-item">
+            <div>
+                <div class="edu-school">Tagore Public School / Columbia Convent</div>
+                <div class="edu-degree">Higher Secondary Schooling</div>
+            </div>
+            <div class="date">2018</div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title" style="color: white;">Contact Me</h2>
+        <p>Currently based in Pune, India. Open to opportunities.</p>
+        <div class="contact-links">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:sankalp.joshi.101@gmail.com">sankalp.joshi.101@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+918962546275">+91 8962546275</a>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-linkedin"></i>
+                <a href="https://linkedin.com/in/sankalp-joshi101" target="_blank">/in/sankalp-joshi101</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Sankalp Joshi. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
